@@ -1,12 +1,14 @@
 package io.javabrains.topic;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class Topic {
 
-    private String id;
+    @Id
+    private String id; // this is now the primary key
     private String name;
     private String description;
 

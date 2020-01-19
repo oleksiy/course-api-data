@@ -2,6 +2,7 @@ package io.javabrains.topic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -14,6 +15,10 @@ import java.util.NoSuchElementException;
 public class TopicService {
 
     Logger logger = LoggerFactory.getLogger(TopicService.class);
+
+    @Autowired
+    private TopicRepository topicRepository;
+
     private List<Topic> topics = new ArrayList<>(Arrays.asList(
             new Topic("spring", "Spring Framework", "Spring Framework Description"),
             new Topic("java", "Core Java", "Core Java Description"),
@@ -21,6 +26,10 @@ public class TopicService {
     ));
 
     public List<Topic> getAllTopics() {
+        //return topics;
+        List<Topic> topics = new ArrayList<>();
+        //topicRepository.findAll().forEach(elt -> topics.add(elt));
+        topicRepository.findAll().forEach(topics::add);
         return topics;
     }
 
