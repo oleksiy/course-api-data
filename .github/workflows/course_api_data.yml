@@ -15,7 +15,5 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Build using Regular Packaging
-      run: mvn clean package
     - name: Record Date
       run: date
